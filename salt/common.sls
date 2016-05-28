@@ -13,6 +13,6 @@ essentials:
 
 /root/swapfile:
   cmd.run:
-    - name: dd if=/dev/zero of=/root/swapfile bs=1M count=2048
+    - name: dd if=/dev/zero of=/root/swapfile bs=1M count=2048 && chmod 0600 /root/swapfile && mkswap /root/swapfile
     - creates: /root/swapfile
   mount.swap: []
