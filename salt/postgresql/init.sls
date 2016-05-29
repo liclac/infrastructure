@@ -1,11 +1,3 @@
-/etc/postgresql/{{ pillar.postgresql.version }}/main/postgresql.conf:
-  file.managed:
-    - source: salt://postgresql/postgresql.conf
-
-/etc/postgresql/{{ pillar.postgresql.version }}/main/pg_hba.conf:
-  file.managed:
-    - source: salt://postgresql/pg_hba.conf
-
 postgresql:
   pkgrepo.managed:
     - name: deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main
@@ -16,3 +8,11 @@ postgresql:
     - watch:
       - /etc/postgresql/{{ pillar.postgresql.version }}/main/postgresql.conf
       - /etc/postgresql/{{ pillar.postgresql.version }}/main/pg_hba.conf
+
+/etc/postgresql/{{ pillar.postgresql.version }}/main/postgresql.conf:
+  file.managed:
+    - source: salt://postgresql/postgresql.conf
+
+/etc/postgresql/{{ pillar.postgresql.version }}/main/pg_hba.conf:
+  file.managed:
+    - source: salt://postgresql/pg_hba.conf
